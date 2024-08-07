@@ -1,6 +1,11 @@
-import express, { json } from "express";
+import express from 'express'
+import { booksRouter } from './routes/booksRouters'
+import { errorHandler } from './middleware/errorHandler'
 
-export const app = express();
+export const app = express()
 
-app.use(json());
+app.use(express.json())
 
+app.use('/books', booksRouter)
+
+app.use(errorHandler)
